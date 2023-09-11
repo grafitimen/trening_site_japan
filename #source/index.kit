@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/main.js"></script>
     <title>Discover Amazing places in Japan</title>
 </head>
 <body>
@@ -382,8 +384,11 @@
                     <img src="img/svg/footer-logo.svg" alt="Discover Amazing places in Japan" class="footer__logo-pic">
                 </div>
                 <nav class="footer__nav">
-                    <ul class="footer__menu">
-                        <h3 class="footer__menu-title">Company</h3>
+
+                <div class="footer__nav-block">
+                    <h3 class="footer__menu-title">Company <span class="footer__menu_open footer__menu_open-company"></span><span class="footer__menu_close footer__menu_open footer__menu_close-company"></span></h3>
+
+                    <ul class="footer__menu footer__menu-company">
 
                         <li class="footer__menu-item">
                             <a href="#!" class="footer__menu-link">About</a>
@@ -398,9 +403,11 @@
                             <a href="#!" class="footer__menu-link">Privacy Policy</a>
                         </li>
                     </ul>
-                    <ul class="footer__menu">
-                        <h3 class="footer__menu-title">Locations</h3>
-
+                </div>
+                <div class="footer__nav-block">
+                    <h3 class="footer__menu-title">Locations <span class="footer__menu_open footer__menu_open-locations"></span><span class="footer__menu_close footer__menu_close-locations"></span></h3>
+                    <ul class="footer__menu footer__menu-locations">
+                        
                         <li class="footer__menu-item">
                             <a href="#!" class="footer__menu-link">Tokyo</a>
                         </li>
@@ -414,8 +421,10 @@
                             <a href="#!" class="footer__menu-link">Hokkaido</a>
                         </li>
                     </ul>
-                    <ul class="footer__menu">
-                        <h3 class="footer__menu-title">Social Media</h3>
+                </div>
+                <div class="footer__nav-block">
+                    <h3 class="footer__menu-title">Social Media <span class="footer__menu_open footer__menu_open-social"></span><span class="footer__menu_close footer__menu_open footer__menu_close-social"></span></h3>
+                    <ul class="footer__menu footer__menu-social">
 
                         <li class="footer__menu-item">
                             <a href="#!" class="footer__menu-link">Facebook</a>
@@ -430,12 +439,11 @@
                             <a href="#!" class="footer__menu-link">Youtube</a>
                         </li>
                     </ul>
+                </div>
                 </nav>
             </div>
         </div>
     </footer>
     <!--Footer end-->
-
-    <script src="js/main.js"></script>
 </body>
 </html>

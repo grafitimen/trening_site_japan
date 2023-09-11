@@ -707,6 +707,32 @@ img {
 .footer__menu-link:hover, .footer__menu-link:focus, .footer__menu-link:active {
 	opacity: 0.75;
 }
+.footer__menu_open {
+	position: relative;
+	padding: 0 0 2px 30px;
+}
+.footer__menu_open:after {
+	content: "";
+	background: url("../img/ship_down.png") 0 0/28px 28px no-repeat;
+	width: 28px;
+	height: 28px;
+	position: absolute;
+	bottom: -2px;
+	left: 3px;
+}
+.footer__menu_close {
+	position: relative;
+	padding: 0 0 6px 32px;
+}
+.footer__menu_close:after {
+	content: "";
+	background: url("../img/ship_up.png") 0 0/25px 25px no-repeat;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: -2px;
+	left: 5px;
+}
 
 /* Footer styles end */
 @media screen and (max-width: 925px) {
@@ -788,6 +814,9 @@ img {
 @media screen and (max-width: 767px) {
 	.intro {
 		padding: 150px 0 340px 0;
+	}
+	.footer__nav {
+		margin: 40px 0 0 0;
 	}
 	.header__nav {
 		position: fixed;
@@ -920,26 +949,6 @@ img {
 		width: -webkit-max-content;
 		width: -moz-max-content;
 		width: max-content;
-	}
-	.footer__menu li {
-		display: none;
-	}
-	.footer__menu:hover li {
-		display: block;
-	}
-	.footer__menu-title {
-		position: relative;
-		display: inline-block;
-		padding: 0 20px 0 0;
-	}
-	.footer__menu-title:after {
-		content: "";
-		position: absolute;
-		top: 5px;
-		right: 0;
-		width: 15px;
-		height: 15px;
-		background: url("../img/ship.png") 0 0/15px 15px no-repeat;
 	}
 	.benefits {
 		margin: 0 0 70px 0;
