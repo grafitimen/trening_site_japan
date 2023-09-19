@@ -7,74 +7,68 @@
 // футер меню начало
 
 $(function () {
-    let menuLi = $('.footer__menu-item');
-    // Кнопки Открыть
-    let openBtnCompany = $('.footer__menu_open-company');
-    let openBtnLocations = $('.footer__menu_open-locations');
-    let openBtnSocial = $('.footer__menu_open-social');
-    // Кнопки закрыть
-    let closeBtnCompany = $('.footer__menu_close-company');
-    let closeBtnLocations = $('.footer__menu_close-locations');
-    let closeBtnSocial = $('.footer__menu_close-social');
-    // Списки
-    let ulSocial = $('.footer__menu-social');
-    let ulLocations = $('.footer__menu-locations');
-    let ulCompany = $('.footer__menu-company');
-    
-    // Скрыть кнопки close
+  var menuLi = $('.footer__menu-item');
+  // Кнопки Открыть
+  var openBtnCompany = $('.footer__menu_open-company');
+  var openBtnLocations = $('.footer__menu_open-locations');
+  var openBtnSocial = $('.footer__menu_open-social');
+  // Кнопки закрыть
+  var closeBtnCompany = $('.footer__menu_close-company');
+  var closeBtnLocations = $('.footer__menu_close-locations');
+  var closeBtnSocial = $('.footer__menu_close-social');
+  // Списки
+  var ulSocial = $('.footer__menu-social');
+  var ulLocations = $('.footer__menu-locations');
+  var ulCompany = $('.footer__menu-company');
+
+  // Скрыть кнопки close
+  closeBtnCompany.hide();
+  closeBtnLocations.hide();
+  closeBtnSocial.hide();
+
+  // Спрятать списки
+  ulSocial.slideUp(0);
+  ulLocations.slideUp(0);
+  ulCompany.slideUp(0);
+
+  // Сворачивает разворачивает список Company
+
+  openBtnCompany.click(function () {
+    ulCompany.slideDown(600);
+    openBtnCompany.hide();
+    closeBtnCompany.slideDown(0);
+  });
+  closeBtnCompany.click(function () {
+    ulCompany.fadeOut(0);
     closeBtnCompany.hide();
+    openBtnCompany.slideDown(0);
+  });
+
+  // Сворачивает разворачивает список Locations
+
+  openBtnLocations.click(function () {
+    ulLocations.slideDown(600);
+    openBtnLocations.hide();
+    closeBtnLocations.slideDown(0);
+  });
+  closeBtnLocations.click(function () {
+    ulLocations.fadeOut(0);
     closeBtnLocations.hide();
+    openBtnLocations.slideDown(0);
+  });
+
+  // Сворачивает разворачивает список Social
+
+  openBtnSocial.click(function () {
+    ulSocial.slideDown(500);
+    openBtnSocial.hide();
+    closeBtnSocial.slideDown(0);
+  });
+  closeBtnSocial.click(function () {
+    ulSocial.fadeOut(0);
     closeBtnSocial.hide();
-
-    // Спрятать списки
-    ulSocial.slideUp(0);
-    ulLocations.slideUp(0);
-    ulCompany.slideUp(0);
-
-    // Сворачивает разворачивает список Company 
-
-    openBtnCompany.click(function () {
-        ulCompany.slideDown(600);
-        openBtnCompany.hide();
-        closeBtnCompany.slideDown(0);
-    });
-
-    closeBtnCompany.click(function () {
-        ulCompany.slideUp(600);
-        closeBtnCompany.hide();
-        openBtnCompany.slideDown(0);
-    });
-
-    // Сворачивает разворачивает список Locations 
-
-    openBtnLocations.click(function () {
-        ulLocations.slideDown(600);
-        openBtnLocations.hide();
-        closeBtnLocations.slideDown(0);
-    });
-
-    closeBtnLocations.click(function () {
-        ulLocations.slideUp(600);
-        closeBtnLocations.hide();
-        openBtnLocations.slideDown(0);
-    });
-
-
-    // Сворачивает разворачивает список Social 
-
-    openBtnSocial.click(function () {
-        ulSocial.slideDown(500);
-        openBtnSocial.hide();
-        closeBtnSocial.slideDown(0);
-    });
-
-    closeBtnSocial.click(function () {
-        ulSocial.slideUp(500);
-        closeBtnSocial.hide();
-        openBtnSocial.slideDown(0);
-    });
-
-
+    openBtnSocial.slideDown(0);
+  });
 });
 
 // футер меню конец
@@ -85,43 +79,38 @@ $(function () {
 
 // Скролл шапки начало
 (function () {
-
-    const smoothScroll = function (targetEl, duration) {
-        const headerElHeight =  document.querySelector('.header').clientHeight;
-        let target = document.querySelector(targetEl);
-        let targetPosition = target.getBoundingClientRect().top - headerElHeight;
-        let startPosition = window.pageYOffset;
-        let startTime = null;
-    
-        const ease = function(t,b,c,d) {
-            t /= d / 2;
-            if (t < 1) return c / 2 * t * t + b;
-            t--;
-            return -c / 2 * (t * (t - 2) - 1) + b;
-        };
-    
-        const animation = function(currentTime){
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const run = ease(timeElapsed, startPosition, targetPosition, duration);
-            window.scrollTo(0,run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
-        };
-        requestAnimationFrame(animation);
-
+  var smoothScroll = function smoothScroll(targetEl, duration) {
+    var headerElHeight = document.querySelector('.header').clientHeight;
+    var target = document.querySelector(targetEl);
+    var targetPosition = target.getBoundingClientRect().top - headerElHeight;
+    var startPosition = window.pageYOffset;
+    var startTime = null;
+    var ease = function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
     };
-
-    const scrollTo = function () {
-        const links = document.querySelectorAll('.js-scroll');
-        links.forEach(each => {
-            each.addEventListener('click', function () {
-                const currentTarget = this.getAttribute('href');
-                smoothScroll(currentTarget, 1000);
-            });
-        });
+    var animation = function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      var timeElapsed = currentTime - startTime;
+      var run = ease(timeElapsed, startPosition, targetPosition, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
     };
-    scrollTo();
-}());
+    requestAnimationFrame(animation);
+  };
+  var scrollTo = function scrollTo() {
+    var links = document.querySelectorAll('.js-scroll');
+    links.forEach(function (each) {
+      each.addEventListener('click', function () {
+        var currentTarget = this.getAttribute('href');
+        smoothScroll(currentTarget, 1000);
+      });
+    });
+  };
+  scrollTo();
+})();
 
 // Скролл шапки конец
 
@@ -132,33 +121,32 @@ $(function () {
 // Меню бургер начало
 
 (function () {
-    const header = document.querySelector('.header');
-    window.onscroll = () => {
-        if(window.scrollY > 50) {
-            header.classList.add('header_active');
-        } else {
-            header.classList.remove('header_active');
-        }
-    };
-}());
+  var header = document.querySelector('.header');
+  window.onscroll = function () {
+    if (window.scrollY > 50) {
+      header.classList.add('header_active');
+    } else {
+      header.classList.remove('header_active');
+    }
+  };
+})();
 
 // Burger handler 
 
 (function () {
-    const burgerItem = document.querySelector('.burger');
-    const menu = document.querySelector('.header__nav');
-    burgerItem.addEventListener('click', () => {
-        menu.classList.add('header__nav_active');
-    });
-}());
-
+  var burgerItem = document.querySelector('.burger');
+  var menu = document.querySelector('.header__nav');
+  burgerItem.addEventListener('click', function () {
+    menu.classList.add('header__nav_active');
+  });
+})();
 (function () {
-    const menuClose = document.querySelector('.header__nav-close');
-    const menu = document.querySelector('.header__nav');
-    menuClose.addEventListener('click', () => {
-        menu.classList.remove('header__nav_active');
-    });
-}());
+  var menuClose = document.querySelector('.header__nav-close');
+  var menu = document.querySelector('.header__nav');
+  menuClose.addEventListener('click', function () {
+    menu.classList.remove('header__nav_active');
+  });
+})();
 
 // Меню бургер конец
 
@@ -242,8 +230,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scroll_header_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scroll_header_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _burger_menu_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 /* harmony import */ var _burger_menu_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_burger_menu_js__WEBPACK_IMPORTED_MODULE_2__);
-
-
 
 
 
